@@ -1,6 +1,5 @@
 import { ArrowTopRightOnSquareIcon, CodeBracketIcon } from '@heroicons/react/24/outline'
 import Footer from '../components/Footer'
-import Header from '../components/Header'
 import { Link } from 'react-router-dom'
 const projects = [
     {
