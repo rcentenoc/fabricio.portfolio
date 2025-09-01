@@ -31,8 +31,15 @@ export default function Header() {
                     }`}
             >
                 <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-                    <Link to="/" className="text-teal-400 font-mono text-xl font-bold">
-                        &lt;RFCC /&gt;
+                    {/* &lt;RFCC /&gt; */}
+                    <Link to="/" className="block" aria-label="home">
+                        <span
+                            className="
+                block w-[3rem] h-[3rem] bg-teal-400 hover:scale-105 transition-transform
+                [mask-image:url('/logo.png')] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center] [mask-mode:alpha]
+                [-webkit-mask-image:url('/logo.png')] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]
+              "
+                        />
                     </Link>
 
                     {/* Desktop Nav */}

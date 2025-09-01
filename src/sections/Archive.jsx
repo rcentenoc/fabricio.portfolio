@@ -54,9 +54,19 @@ export default function Archive() {
     return (
         <section id="archive" className="bg-[#0a192f] min-h-screen px-6 py-24">
 
+            {/* <Link to="/" className="flex justify-center pb-15 text-teal-400 font-mono text-xl font-bold">
+                <img src="/logo.png" alt="home" className='h-auto w-[3rem] hover:scale-105' />
+            </Link> */}
             <Link to="/" className="flex justify-center pb-15 text-teal-400 font-mono text-xl font-bold">
-                &lt;RFCC /&gt;
+                <span
+                    aria-label="home"
+                    className=" block w-[3rem] h-[3rem] bg-teal-400 hover:scale-105 transition-transform
+      [mask-image:url('/logo.png')] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center]
+      [-webkit-mask-image:url('/logo.png')] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]"
+                />
             </Link>
+
+
 
             <h2 className="text-2xl font-bold text-gray-100 mb-12">
                 <span className="text-teal-400 font-mono mr-2"></span>Project Archive
