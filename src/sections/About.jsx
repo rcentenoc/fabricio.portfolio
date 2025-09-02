@@ -16,7 +16,7 @@ export default function About() {
                     Aquí hay algunas tecnologías con las que he estado trabajando recientemente:
                 </p>
 
-                <ul className="grid grid-cols-3 md:grid-cols-2 gap-x-10 text-sm font-mono mt-4">
+                <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-10 text-sm font-mono mt-4">
                     <li className="before:content-['▹'] before:text-teal-400 hover:text-teal-400">
                         <a href="https://platzi.com/p/fabriciocendecar/ruta/100-ruta/diploma/detalle/">
                             JavaScript (ES6+)
