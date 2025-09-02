@@ -4,7 +4,7 @@ export default function Footer() {
             <div className="flex justify-center items-center space-x-6 mb-4">
                 {/* GitHub */}
                 <a
-                    href="https://github.com/tuusuario"
+                    href="https://github.com/rcentenoc"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="GitHub"
@@ -21,7 +21,7 @@ export default function Footer() {
 
                 {/* LinkedIn */}
                 <a
-                    href="https://linkedin.com/in/tuusuario"
+                    href="https://www.linkedin.com/in/r-fabricio/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="LinkedIn"
@@ -36,20 +36,6 @@ export default function Footer() {
                     </svg>
                 </a>
 
-                {/* Email */}
-                <a
-                    href="mailto:tuemail@email.com"
-                    aria-label="Email"
-                    className="text-gray-400 hover:text-teal-400 transition"
-                >
-                    <svg
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                        className="h-6 w-6"
-                    >
-                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18V8.99l8 6 8-6V18H4z" />
-                    </svg>
-                </a>
             </div>
 
             <p className="text-xs text-gray-500 font-mono">

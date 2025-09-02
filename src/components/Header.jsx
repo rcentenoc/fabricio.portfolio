@@ -35,10 +35,9 @@ export default function Header() {
                     <Link to="/" className="block" aria-label="home">
                         <span
                             className="
-                block w-[2rem] h-[2rem] bg-teal-400 hover:scale-105 transition-transform
-                [mask-image:url('/logo.png')] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center] [mask-mode:alpha]
-                [-webkit-mask-image:url('/logo.png')] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]
-              "
+                                block w-[2rem] h-[2rem] bg-teal-400 hover:scale-105 transition-transform
+                                [mask-image:url('/logo.png')] [mask-size:contain] [mask-repeat:no-repeat] [mask-position:center] [mask-mode:alpha]
+                                [-webkit-mask-image:url('/logo.png')] [-webkit-mask-size:contain] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:center]"
                         />
                     </Link>
 
