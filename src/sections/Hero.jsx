@@ -14,7 +14,7 @@ export default function Hero() {
 
                 <p className="text-gray-400 text-base md:text-lg leading-relaxed mb-10">
                     Soy ingeniero full-stack especializado en desarrollar aplicaciones y sitios web. Actualmente, me enfoco en
-                    crear productos accesibles orientados a gestores <span className="text-teal-400">Inteligencia Artificial</span>.
+                    crear productos accesibles orientados a gestores de <span className="text-teal-400">Inteligencia Artificial</span>.
                 </p>
 
                 <a

@@ -3,49 +3,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const experiences = [
     {
-        company: 'Klaviyo',
-        position: 'Senior Front-End Engineer',
-        range: 'Feb 2023 – Present',
+        company: 'KhipuCode',
+        position: 'Desarrollador Full Stack',
+        range: 'Feb 2025 – Presente',
         description: [
-            'Leading UI development on customer analytics dashboards.',
-            'Improving accessibility and performance across the app.',
-            'Mentoring junior engineers and leading frontend best practices.'
+            'Desarrollo de servicios backend, exposición de APIs REST, GraphQL y socket.IO.',
+            'Integración de IA con Gemini para extracción estructurada de texto desde documentos y automatización de reportes.',
         ],
-        url: 'https://www.klaviyo.com'
+        url: 'https://backup.khipucode.com/'
     },
     {
-        company: 'Upstatement',
-        position: 'Front-End Developer',
+        company: 'Tdx Perú S.A.C.',
+        position: 'Desarrollador Back-End',
+        range: 'Feb 2022 – Abr 2024',
+        description: [
+            'Desarrollo de aplicativo móvil en React Native para asistencia en traducciones, integrando API de DeepL.',
+            'Refactorización de sistema de gestión documental desarrollado.',
+        ],
+        url: 'https://tdxperu.com/'
+    },
+    {
+        company: 'Famai Seal JET S.A.C.',
+        position: 'Practicante de Desarrollo Web',
         range: 'Jan 2021 – Jan 2023',
         description: [
-            'Worked with a cross-functional team to build custom web apps.',
-            'Built reusable components and utilities with React and Tailwind.',
-            'Collaborated with designers to create pixel-perfect UIs.'
+            'Desarrollo de un sistema de control de asistencia para empleados utilizando React.js, Node.js y SQL Server.',
+            'estión de mantenimiento de software y hardware bajo estándares ISO 9001'
         ],
-        url: 'https://www.upstatement.com'
+        url: 'https://famaisealjet.com/'
     },
-    {
-        company: 'Upstatement',
-        position: 'Front-End Developer',
-        range: 'Jan 2021 – Jan 2023',
-        description: [
-            'Worked with a cross-functional team to build custom web apps.',
-            'Built reusable components and utilities with React and Tailwind.',
-            'Collaborated with designers to create pixel-perfect UIs.'
-        ],
-        url: 'https://www.upstatement.com'
-    },
-    {
-        company: 'Apple',
-        position: 'Software Engineering Intern',
-        range: 'May 2020 – Aug 2020',
-        description: [
-            'Contributed to internal tools used across engineering teams.',
-            'Helped refactor legacy code into modular, testable components.',
-            'Delivered a full-featured admin dashboard under tight deadlines.'
-        ],
-        url: 'https://www.apple.com'
-    }
 ];
 
 export default function Experience() {
