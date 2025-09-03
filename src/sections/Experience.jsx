@@ -25,7 +25,7 @@ const experiences = [
     {
         company: 'Famai Seal JET S.A.C.',
         position: 'Practicante de Desarrollo Web',
-        range: 'Jan 2021 – Jan 2023',
+        range: 'May 2023 – Ago 2023',
         description: [
             'Desarrollo de un sistema de control de asistencia para empleados utilizando React.js, Node.js y SQL Server.',
             'estión de mantenimiento de software y hardware bajo estándares ISO 9001'
