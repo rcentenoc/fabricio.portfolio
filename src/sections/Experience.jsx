@@ -40,7 +40,8 @@ export default function Experience() {
     return (
         <section id="experience" className="md:h-full h-[30rem] max-w-4xl mx-auto px-6 py-24">
             <h2 className="text-2xl font-bold text-gray-100 mb-12">
-                <span className="text-teal-400 font-mono mr-2">02.</span>Where I've Worked
+                <span className="text-teal-400 font-mono mr-2">02.</span>Mi experiencia
+
             </h2>
 
             <div className="md:flex">
