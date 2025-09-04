@@ -41,7 +41,7 @@ export default function Projects() {
     return (
         <section id="projects" className="max-w-6xl mx-auto px-6 py-24">
             <h2 className="text-2xl font-bold text-gray-100 mb-12">
-                <span className="text-teal-400 font-mono mr-2">03.</span>Some Things I’ve Built
+                <span className="text-teal-400 font-mono mr-2">03.</span>Algunas cosas que he construido
             </h2>
 
             <div className="grid md:grid-cols-2 gap-10">

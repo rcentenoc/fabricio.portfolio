@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 const navLinks = [
     { name: 'Sobre mí', id: 'about' },
     { name: 'Experiencia', id: 'experience' },
-    { name: 'Projectos', id: 'projects' },
+    // { name: 'Projectos', id: 'projects' },
     { name: 'Contáctame', id: 'contact' },
 ]
 
@@ -59,7 +59,7 @@ export default function Header() {
                             className="ml-4 px-4 py-2 border border-teal-400 rounded hover:bg-teal-400 hover:text-[#0a192f] transition duration-200"
                             rel="noopener"
                         >
-                            Currículum
+                            Resume CV
                         </a>
                     </nav>
 
@@ -114,7 +114,7 @@ export default function Header() {
                         className="mt-4 inline-block px-4 py-2 border border-teal-400 rounded hover:bg-teal-400 hover:text-[#0a192f] hover:font-bold transition duration-200"
                         onClick={() => setIsOpen(false)}
                     >
-                        Currículum
+                        Resume CV
                     </a>
                 </nav>
             </div>

@@ -41,29 +41,31 @@ export default function Contact() {
             id="contact"
             className="max-w-2xl mx-auto px-6 py-24 text-center"
         >
-            <p className="text-teal-400 font-mono mb-2">04. What's Next?</p>
+            <p className="text-teal-400 font-mono mb-2">03. ¿Que hay de nuevo?</p>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-100 mb-6">
-                Get In Touch
+                Pongamonos en contacto.
             </h2>
 
             {status === 'success' ? (
                 <div className="mt-10 bg-[#112240] border border-teal-400 rounded p-6 text-gray-300 text-center">
-                    <h3 className="text-xl font-semibold mb-4 text-teal-400">Message Sent!</h3>
+                    <h3 className="text-xl font-semibold mb-4 text-teal-400">Mensaje enviado!</h3>
                     <p className="mb-6">
-                        Thank you for reaching out. I'll get back to you as soon as possible!
+                        Gracias por contactarme. ¡Te responderé lo antes posible!
                     </p>
                     <button
                         onClick={resetForm}
                         className="cursor-pointer inline-block px-6 py-3 border border-teal-400 rounded text-teal-400 hover:bg-teal-400 hover:text-[#0a192f] font-mono text-sm transition duration-300"
                     >
-                        Send Another Message
+                        Enviar otro mensaje
                     </button>
                 </div>
             ) : (
                 <>
                     <p className="text-gray-400 text-base md:text-lg mb-10">
-                        I'm currently open to new opportunities, collaborations, or just having a friendly chat.
-                        Whether you have a question or just want to say hi, my inbox is always open.
+                        Estoy abierto a nuevas oportunidades, colaboraciones o simplemente a charlar un rato. Si tienes alguna pregunta o simplemente quieres saludar, mi bandeja de entrada siempre está abierta.
+                    </p>
+                    <p className="text-gray-400 text-base md:text-lg mb-10">
+                        Puedes enviarme un Email o escribeme por whatsapp.
                     </p>
 
                     <form
@@ -75,7 +77,7 @@ export default function Contact() {
                         <input type="hidden" name="_template" value="table" />
 
                         <div>
-                            <label className="block text-sm text-gray-400 mb-1">Name</label>
+                            <label className="block text-sm text-gray-400 mb-1">Nombre</label>
                             <input
                                 type="text"
                                 name="name"
@@ -95,7 +97,7 @@ export default function Contact() {
                         </div>
 
                         <div>
-                            <label className="block text-sm text-gray-400 mb-1">Message</label>
+                            <label className="block text-sm text-gray-400 mb-1">Mensaje</label>
                             <textarea
                                 name="message"
                                 rows="4"
@@ -132,16 +134,17 @@ export default function Contact() {
                                             d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                                         ></path>
                                     </svg>
-                                    Sending...
+                                    Enviando...
                                 </>
                             ) : (
-                                'Send Message'
+                                'Enviar mensaje por Email'
                             )}
                         </button>
 
                         {status === 'error' && (
                             <p className="mt-4 text-red-400 font-mono text-sm">
-                                Oops! Something went wrong. Please try again later.
+                                Oops! Algo salió mal. Inténtalo de nuevo más tarde.
+
                             </p>
                         )}
                     </form>
