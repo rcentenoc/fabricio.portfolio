@@ -43,7 +43,7 @@ export default function Contact() {
         >
             <p className="text-teal-400 font-mono mb-2">03. ¿Que hay de nuevo?</p>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-100 mb-6">
-                Pongamonos en contacto.
+                Pongámonos en contacto.
             </h2>
 
             {status === 'success' ? (
