@@ -64,9 +64,6 @@ export default function Contact() {
                     <p className="text-gray-400 text-base md:text-lg mb-10">
                         Estoy abierto a nuevas oportunidades, colaboraciones o simplemente a charlar un rato. Si tienes alguna pregunta o simplemente quieres saludar, mi bandeja de entrada siempre está abierta.
                     </p>
-                    <p className="text-gray-400 text-base md:text-lg mb-10">
-                        Puedes enviarme un Email o escribeme por whatsapp.
-                    </p>
 
                     <form
                         ref={formRef}

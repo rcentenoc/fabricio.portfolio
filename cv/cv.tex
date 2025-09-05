@@ -1,0 +1,453 @@
+\documentclass[10pt, letterpaper]{article}
+% =======================
+% Packages y configuración base
+% =======================
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer              
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{iftex}
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+\fi
+\usepackage[spanish,es-noshorthands]{babel}
+\usepackage{microtype}
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 0, 0} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage{graphicx}
+\usepackage[
+    pdftitle={FAB's CV},
+    pdfauthor={Fab},
+    pdfcreator={LaTeX with RenderCV},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+% \ifPDFTeX
+%     \input{glyphtounicode}
+%     \pdfgentounicode=1
+%     \usepackage[T1]{fontenc}
+%     \usepackage[utf8]{inputenc}
+%     \usepackage{lmodern}
+% \fi
+
+\usepackage{charter}
+
+\usepackage{tikz}
+\usetikzlibrary{shadows,calc}
+% QR en esquina superior izquierda (top-left), con estilo
+% Uso: \TopLeftQR[<tamano>]{<URL>}  --> p.ej. \TopLeftQR[2.1cm]{https://tusitio.com}
+\newcommand{\TopLeftQR}[2][2cm]{%
+  \AddToShipoutPictureFG*{%
+    % Coordenadas en puntos de la página (origen: esquina inferior izquierda)
+    % X = 2cm desde el borde izquierdo; Y = altura de página - 2cm (alineado con tus márgenes)
+    \put(\LenToUnit{0.3cm},\LenToUnit{\paperheight-2.5cm}){%
+      \makebox[0pt][l]{\href{#2}{\includegraphics[width=#1]{one.png}}}%
+    }%
+  }%
+}
+
+% =======================
+% Ajustes globales
+% =======================
+% Some settings:
+\raggedright
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0.15cm} % set column seperation
+\pagenumbering{gobble} % no page numbering
+
+\titleformat{\section}
+    {\needspace{4\baselineskip}\bfseries\large}
+    % {\needspace{4\baselineskip}\large\bfseries\scshape}
+    {}{0pt}{}
+    [\vspace{2pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\vcenter{\hbox{\small$\bullet$}}$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0 cm + 0.00001 cm
+    }{
+        0 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{threecolentry}[3][]{
+    \onecolentry
+    \def\thirdColumn{#3}
+    \setcolumnwidth{, \fill, 4.5 cm}
+    \begin{paracol}{3}
+    {\raggedright #2} \switchcolumn
+}{
+    \switchcolumn \raggedleft \thirdColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for three column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.4}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+% Sello "Actualizado: hoy" en esquina sup. derecha
+\newcommand{\lastupdated}{%
+  \AddToShipoutPictureFG*{%
+    \put(\LenToUnit{\paperwidth-2cm},\LenToUnit{\paperheight-1.0cm}){%
+      \makebox[0pt][r]{\small\color{gray}\textit{Actualizado: \today}}%
+    }%
+  }%
+}
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+\newcommand{\AND}{\unskip
+  \cleaders\copy\ANDbox\hskip\wd\ANDbox \ignorespaces}
+\newsavebox\ANDbox
+\sbox\ANDbox{$|$}
+
+
+% new command for external links:
+
+% /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+\begin{document}
+% \lastupdated
+\TopLeftQR[2.3cm]{https://fabriciocc.vercel.app/} % o tu URL personal
+    \begin{header}
+        \fontsize{24pt}{26pt}\selectfont
+        \textbf{Ronald Fabricio Centeno Cárdenas}
+
+        \vspace{5 pt}
+
+        \normalsize
+        \mbox{\faEnvelope[regular]\;\hrefWithoutArrow{mailto:efren609@duck.com}{efren609@duck.com}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://github.com/rcentenoc}\faGithub\;\hrefWithoutArrow{https://github.com/rcentenoc}{github.com/rcentenoc}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://www.linkedin.com/in/r-fabricio}\faLinkedinIn\;\hrefWithoutArrow{https://www.linkedin.com/in/r-fabricio}{linkedin.com/r-fabricio}}%
+        \kern 5.0 pt%
+        \AND%
+        \kern 5.0 pt%
+        \mbox{\hrefWithoutArrow{https://api.whatsapp.com/send/?phone=51932001792}\faWhatsapp\;\hrefWithoutArrow{https://api.whatsapp.com/send/?phone=51932001792}{+51 932 001 792}}%
+        \kern 5.0 pt%
+        
+        \mbox{Arequipa, Perú}%
+    \end{header}
+
+    \vspace{5 pt - 0.3 cm}
+
+% /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    \section{}        
+        \begin{onecolentry}
+            \begin{center}
+            % Ingeniero de Software con más de 4 años de experiencia como desarrollador Fullstack, especializado en sistemas escalables con Java, TypeScript, Node.js y Spring Boot. Con experiencia en bases de datos como MongoDB, MySQL y PostgreSQL, y herramientas de monitoreo como Morgan. Autodidacta y con experiencia en equipos ágiles bajo Scrum.  Busco contribuir en proyectos como desarrollador backend o en roles FullStack, aprovechando mi conocimiento en tecnologías modernas y mi pasión por la optimización de procesos.
+            Ingeniero de software Full-Stack con más de 4 años de experiencia, enfocado a construir aplicaciones modernas y potenciarlas con IA. Cuento con experiencia en diferentes frameworks y stacks de desarrollo de software, además de desarrollo movil. Actualmente, incursiono en el diseño e integración de sistemas RAG y flujos basados en MCP para aumentar relevancia y automatización; también he usado n8n para orquestar procesos. Busco aportar valor en equipos que escalen productos de IA con foco en calidad, seguridad y observabilidad.
+            
+            \end{center}
+        \end{onecolentry}
+
+% /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    \section{Experiencia}
+        
+        \begin{twocolentry}{
+            Feb, 2025 – Actualmente
+        }
+            \textbf{Desarrollador FullStack}, Khipucode
+
+        \vspace{0.10 cm}
+            \begin{highlights}
+                \vspace{0.1 cm}
+                \item Diseño y desarrollo de servicios backend (Node.js/NestJS), exposición de APIs REST y GraphQL, tiempo real con Socket.IO y mensajería/event streaming con Apache Kafka.
+                \item Integración de IA con Gemini para extracción estructurada de texto desde documentos; automatización de reportes (PDF/Excel) con plantillas Carbone.
+                \item Desarrollo de una API que obtiene y normaliza precios oficiales de oro y plata (scraping responsable, validaciones, scheduler y observabilidad), además de evaluar e incorporar nuevas tecnologías.
+            \end{highlights}
+        \end{twocolentry}
+
+
+        \vspace{0.3 cm}
+        
+        \begin{twocolentry}{
+            Oct, 2024 – Feb, 2025
+        }
+            \textbf{Tesista}, CEEP-Eficiencia energética
+
+        \vspace{0.10 cm}
+            \begin{highlights}
+                \vspace{0.1 cm}
+                \item Desarrollo de un procesador universal de datos basado en binarización, enfocado en reducir la frecuencia de envío y mejorar la precisión en sistemas IoT.
+                \item Implementación de técnicas de machine learning con Java, Spring Boot, MySQL y AWS.
+            \end{highlights}
+            \end{twocolentry}
+
+
+        \vspace{0.3 cm}
+
+
+        \begin{twocolentry}{
+            Feb, 2022 – Abr 2024
+        }
+            \textbf{Desarrollador BackEnd}, TDX PERÚ S.A.C.
+
+        \vspace{0.10 cm}
+            \begin{highlights}
+                \vspace{0.1 cm}
+                \item Desarrollo de aplicativo móvil en React Native para asistencia en traducciones, integrando API de DeepL para traducción automática en tiempo real.
+                \item Refactorización y mantenimiento de sistema de gestión documental desarrollado con Spring Boot, MySQL, MongoDB y Redis, enfocándome en la reducción de deuda técnica y mejora del rendimiento.
+                \item Optimización de flujos backend y mejora de la arquitectura existente, asegurando escalabilidad y estabilidad del sistema en entornos productivos.
+            \end{highlights}
+            \end{twocolentry}
+
+
+        \vspace{0.3 cm}
+
+
+        \begin{twocolentry}{
+            May, 2023 – Ago 2023
+        }
+            \textbf{Practicante}, FAMAI SEAL JET S.A.C.
+
+        \vspace{0.10 cm}
+            \begin{highlights}
+                \vspace{0.1 cm}
+                \item Desarrollo de un sistema de control de asistencia para empleados utilizando React.js, Node.js y SQL Server.
+                \item Gestión de mantenimiento de software y hardware bajo estándares ISO 9001, y administración de sistemas empresariales como CPanel y Outlook.
+            \end{highlights}
+        \end{twocolentry}
+
+% /////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+   
+    \section{Educación}
+       
+        \begin{twocolentry}{
+            Feb 2018 – Dic 2023
+        }
+            \textbf{Universidad La Salle, Arequipa}, Ingeniería de Software
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Bachiller en Ingeniería de Software.
+                \item \textbf{Coursework:} Arquitectura de software, Inteligencia Artificial, Desarrollo de compiladores, Desarrollo de Software, Calidad y Elicitación de requisitos de Software. 
+            \end{highlights}
+        \end{onecolentry}
+        \vspace{0.30 cm}
+
+        \begin{twocolentry}{
+            Ago 2023 - Ago 2024
+        }
+            \textbf{Programa de Oracle One}, Desarrollo BackEnd\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \href{https://app.aluracursos.com/user/efren609/fullCertificate/124b1c05ec9e67541c81dad40a470321}{Certificación del programa Oracle One: Backend con Java y Springboot.} 
+                \item \textbf{Coursework:} Oracle Cloud Infrastructure, Java, Springboot, Mysql.
+            \end{highlights}
+        \end{onecolentry}
+        
+        \vspace{0.30 cm}
+
+        \begin{twocolentry}{
+            Ene 2022 – Feb 2024
+        }
+            \textbf{Platzi}, Escuela de JavaScript\end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item \href{https://platzi.com/p/fabriciocendecar/ruta/100-javascript-full-stack/diploma/detalle/}{Certificación FullStack Developer con JavaScript.}
+                \item \textbf{Coursework:} Backend con Node.js, Full Stack con Next.js, Desarrollo de Apps con React Native, Frontend con React.js.
+            \end{highlights}
+        \end{onecolentry}
+
+% /////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+       
+    \section{Publicaciones}
+
+
+
+        
+        \begin{samepage}
+            \begin{twocolentry}{
+                Feb 2022
+            }
+                \textbf{Ranking of tutorials on YouTube based on the analysis of feelings made to their comments}
+            \end{twocolentry}
+
+            \vspace{0.10 cm}
+            
+            \begin{onecolentry}
+                
+
+                \vspace{0.10 cm}
+                
+        \href{https://doi.org/10.48168/innosoft.s9.a66}{10.48168/innosoft.s9.a66}
+        \end{onecolentry}
+        \end{samepage}
+
+
+    
+    % \section{Projects}
+        
+    %     \begin{twocolentry}{
+    %         \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
+    %     }
+    %         \textbf{Multi-User Drawing Tool}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Developed an electronic classroom where multiple users can simultaneously view and draw on a "chalkboard" with each person's edits synchronized
+    %             \item Tools Used: C++, MFC
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{twocolentry}{
+    %         \href{https://github.com/sinaatalay/rendercv}{github.com/name/repo}
+    %     }
+    %         \textbf{Synchronized Desktop Calendar}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Developed a desktop calendar with globally shared and synchronized calendars, allowing users to schedule meetings with other users
+    %             \item Tools Used: C\#, .NET, SQL, XML
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{twocolentry}{
+    %         2002
+    %     }
+    %         \textbf{Custom Operating System}\end{twocolentry}
+
+    %     \vspace{0.10 cm}
+    %     \begin{onecolentry}
+    %         \begin{highlights}
+    %             \item Built a UNIX-style OS with a scheduler, file system, text editor, and calculator
+    %             \item Tools Used: C
+    %         \end{highlights}
+    %     \end{onecolentry}
+
+
+    %     \includegraphics[width=2cm]{one.png}
+
+    
+    % \section{Technologies}
+
+
+
+        
+    %     \begin{onecolentry}
+    %         \textbf{Languages:} C++, C, Java, Objective-C, C\#, SQL, JavaScript
+    %     \end{onecolentry}
+
+    %     \vspace{0.2 cm}
+
+    %     \begin{onecolentry}
+    %         \textbf{Technologies:} .NET, Microsoft SQL Server, XCode, Interface Builder
+    %     \end{onecolentry}
+
+
+\section{Tecnologías}
+\begin{onecolentry}
+  \textbf{Lenguajes/Frameworks:} Java, TypeScript/JavaScript, Node.js, NestJS, Spring Boot, React, Next.js, Vue, Flutter. \\
+  \textbf{Datos/Infra:} PostgreSQL, MySQL, MongoDB, Kafka, Socket.IO, AWS. \\
+  \textbf{IA/Automatización:} RAG, MCP, Gemini, n8n, Carbone. \\
+\end{onecolentry}
+
+    
+
+\end{document}

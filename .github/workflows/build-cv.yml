@@ -1,0 +1,38 @@
+name: Build CV PDF
+
+on:
+  push:
+    paths:
+      - "cv/**"
+      - ".github/workflows/build-cv.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Compila usando latexmk (TeX Live via latex-action)
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: cv/cv.tex
+          latexmk_use_lualatex: false # tu preámbulo usa pdflatex; si algún día cambias a xelatex, pon true
+          # opcional: especifica versión estable de TeX Live
+          # texlive_version: 2024
+
+      # Mueve el PDF generado a /public/resume.pdf
+      - name: Move PDF to public
+        run: |
+          mkdir -p public
+          # latex-action deja el PDF al lado del .tex (cv/cv.pdf)
+          mv cv/cv.pdf public/resume.pdf
+
+      # Hace commit del PDF para que Vercel redeploquee automáticamente
+      - name: Commit resume.pdf
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore(cv): update resume.pdf"
+          file_pattern: public/resume.pdf
