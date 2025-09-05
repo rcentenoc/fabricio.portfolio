@@ -134,7 +134,7 @@ export default function Contact() {
                                     Enviando...
                                 </>
                             ) : (
-                                'Enviar mensaje por Email'
+                                'Enviar mensaje'
                             )}
                         </button>
 
