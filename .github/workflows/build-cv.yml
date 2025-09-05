@@ -7,6 +7,9 @@ on:
       - ".github/workflows/build-cv.yml"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -28,7 +31,6 @@ jobs:
       - name: Move PDF to public
         run: |
           mkdir -p public
-          # latex-action deja el PDF al lado del .tex (cv/cv.pdf)
           mv cv/cv.pdf public/resume.pdf
 
       # Hace commit del PDF para que Vercel redeploquee automáticamente
@@ -37,3 +39,4 @@ jobs:
         with:
           commit_message: "chore(cv): update resume.pdf"
           file_pattern: public/resume.pdf
+          branch: ${{ github.ref_name }}
