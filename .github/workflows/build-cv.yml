@@ -19,6 +19,7 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: cv/cv.tex
+          work_in_root_file_dir: true
           latexmk_use_lualatex: false # tu preámbulo usa pdflatex; si algún día cambias a xelatex, pon true
           # opcional: especifica versión estable de TeX Live
           # texlive_version: 2024
